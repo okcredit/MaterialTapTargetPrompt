@@ -54,7 +54,12 @@ public class RectanglePromptFocal extends PromptFocal
     /**
      * Constructor.
      */
-    public RectanglePromptFocal()
+    public RectanglePromptFocal(){
+
+        final float density = Resources.getSystem().getDisplayMetrics().density;
+        new RectanglePromptFocal(2*density,8*density);
+    }
+    public RectanglePromptFocal(float radius,float padding)
     {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
@@ -65,9 +70,8 @@ public class RectanglePromptFocal extends PromptFocal
         mBaseBounds = new RectF();
         mBaseBoundsCentre = new PointF();
         mRippleBounds = new RectF();
-        final float density = Resources.getSystem().getDisplayMetrics().density;
-        mRx = mRy = 2 * density;
-        mPadding = 8 * density;
+        mRx = mRy = radius;
+        mPadding = padding;
     }
 
     /**
@@ -221,9 +225,9 @@ public class RectanglePromptFocal extends PromptFocal
             mPaint.setAlpha(oldAlpha);
         }
 
-        canvas.drawPath(getPath(), mPaint);
+//        canvas.drawPath(getPath(), mPaint);
 
-        // canvas.drawRoundRect(mBaseBounds, mRx, mRy, mBoundsPaint);
+         canvas.drawRoundRect(mBaseBounds, mRx, mRy, mPaint);
     }
 
     @Override

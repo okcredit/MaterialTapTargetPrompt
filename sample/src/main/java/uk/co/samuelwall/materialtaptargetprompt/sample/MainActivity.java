@@ -243,6 +243,16 @@ public class MainActivity extends AppCompatActivity
                 .show();
     }
 
+    public void showRoundedRect(View view) {
+        new MaterialTapTargetPrompt.Builder(this)
+                .setTarget(view)
+                .setPrimaryText("Different shapes")
+                .setSecondaryText("Extend PromptFocal or PromptBackground to change the shapes")
+                .setPromptBackground(new RectanglePromptBackground())
+                .setPromptFocal(new RectanglePromptFocal(80,100))
+                .show();
+    }
+
     public void showFullscreenRectPrompt(View view)
     {
         new MaterialTapTargetPrompt.Builder(this)
@@ -422,4 +432,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
